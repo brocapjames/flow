@@ -1,0 +1,9 @@
+body{margin:0;background:#f6f7fb;color:#1f2430;font:16px/1.6 "Segoe UI",system-ui,-apple-system,sans-serif}
+main{max-width:640px;margin:0 auto;padding:48px 16px 24px}
+h1{font-size:34px;margin:0 0 6px;color:#2b4fd8}
+h2{font-size:19px;margin:28px 0 6px}
+.lead{font-size:18px;color:#4b5263;margin:0 0 8px}
+.muted{color:#6b7280;font-size:14px}
+a{color:#2b4fd8}
+ul{padding-left:20px}
+footer{max-width:640px;margin:0 auto;padding:16px 16px 48px;color:#6b7280;font-size:14px}
