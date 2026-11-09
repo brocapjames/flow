@@ -44,6 +44,9 @@ Drive for desktop are useful but not needed to install.
    - It downloads Node.js into `~/.flow-build` (checked against its checksum), installs Flow's libraries, builds
      `Flow.app` for this Mac, puts it in `/Applications` (or `~/Applications`), tidies up and opens Flow.
    - No admin password is needed. About 5 minutes. If you can run shell commands yourself, you may run this line.
+   - macOS may ask "Terminal would like to access files in your Downloads folder": **Allow**.
+   - It prints "Installing Flow <version>" first. It stops, changing nothing, if a newer Flow folder is beside
+     this one (e.g. "Flow 2") or if the Flow already in Applications is some other app with the same name.
 3. Install Claude Code (skip if `claude --version` already works): `curl -fsSL https://claude.ai/install.sh | bash`
    It goes to `~/.local/bin/claude`, which is where Flow looks (also Homebrew and `/usr/local/bin`).
 4. The person signs in: `claude` in Terminal, sign in with their Claude account in the browser, then `/exit`.
@@ -57,8 +60,11 @@ macOS questions the first time (the person clicks):
 - For texts (iMessage): System Settings, Privacy & Security, **Full Disk Access**, **+**, pick Flow, switch it on,
   then quit Flow (the F in the menu bar, Quit) and open it again.
 
-Updating later: unzip the new zip into Downloads (replace the old Flow folder) and run the same Terminal line.
-Settings and sign-ins are kept.
+Updating later: move any old **Flow** folder in Downloads to the Bin first (otherwise the new zip unpacks as
+"Flow 2" and the usual line would install the old version again), unzip the new zip into Downloads, and run the
+same Terminal line. Settings and sign-ins are kept. If Flow can't read texts after an update although its Full Disk
+Access switch looks on: in Full Disk Access select Flow, remove it with **-**, add it again with **+**, then quit
+and reopen Flow.
 
 ## Windows
 
@@ -100,6 +106,11 @@ nothing is sent. Flow's mail check runs every 5 minutes from 6am to 10pm; the **
 | "The Node.js download didn't match its checksum" | A bad download. Run again later. Don't skip the check. |
 | "Node.js doesn't start on this Mac" | `rm -rf ~/.flow-build` and run the installer again. |
 | "Flow is still open" | Quit Flow (F in the menu bar, Quit Flow), run again. |
+| "Operation not permitted" as soon as the line runs | Terminal wasn't allowed into Downloads. System Settings, Privacy & Security, Files and Folders, Terminal: switch on Downloads. Run again. |
+| "a newer one (Flow x) is beside it" | Two Flow folders in Downloads. Run the line the message prints (it points at the newer folder), then put the old folder in the Bin. |
+| "Couldn't download Flow's parts" | The internet connection dropped. Run the same line again. |
+| "There's already an app called Flow … and it isn't this Flow" | Another app with the same name is in Applications. Rename or move it (the person decides), run again. |
+| Flow can't read texts after an update, Full Disk Access looks on | In Full Disk Access select Flow, **-**, then **+** and add Flow again. Quit and reopen Flow. |
 | Any other red message from the installer | Send James a screenshot of the whole Terminal window. |
 | Database won't connect, or "paused" | Check the line was pasted whole (starts `postgresql://`, no spaces). A free Supabase project pauses after 7 days unused: supabase.com/dashboard, the project, **Restore project**. Flow reconnects by itself. |
 | Claude: key rejected / out of credit | Rejected: a typo or a deleted key, ask James. Out of credit: console.anthropic.com, Billing, add credit. Flow waits and carries on. |
