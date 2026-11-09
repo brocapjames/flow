@@ -30,6 +30,10 @@ their own Claude key and their own Google sign-in. James can't see their email.
 
 If any is missing, stop and ask James. Don't try to make your own.
 
+They also need their own **Claude subscription** (Pro, Max or higher; the free plan doesn't include Claude Code).
+Flow's regular mail check runs on it through **Claude Code**; the API key covers drafts, document reviews, Chat,
+and the mail check whenever Claude Code isn't available.
+
 ## Mac
 
 Needs: macOS on Apple silicon or Intel, an internet connection, about 10 minutes. Microsoft Office and Google
@@ -40,7 +44,10 @@ Drive for desktop are useful but not needed to install.
    - It downloads Node.js into `~/.flow-build` (checked against its checksum), installs Flow's libraries, builds
      `Flow.app` for this Mac, puts it in `/Applications` (or `~/Applications`), tidies up and opens Flow.
    - No admin password is needed. About 5 minutes. If you can run shell commands yourself, you may run this line.
-3. Connect Flow (below).
+3. Install Claude Code (skip if `claude --version` already works): `curl -fsSL https://claude.ai/install.sh | bash`
+   It goes to `~/.local/bin/claude`, which is where Flow looks (also Homebrew and `/usr/local/bin`).
+4. The person signs in: `claude` in Terminal, sign in with their Claude account in the browser, then `/exit`.
+5. Connect Flow (below).
 
 macOS questions the first time (the person clicks):
 - "Flow wants to use your confidential information stored in 'Flow Safe Storage'": Mac password, **Always Allow**.
@@ -57,14 +64,19 @@ Settings and sign-ins are kept.
 
 1. Run `Flow-Setup-<version>.exe`. It installs for this Windows account only (no admin).
 2. "Windows protected your PC" (the app isn't code-signed): **More info**, then **Run anyway**.
-3. Flow opens. Connect Flow (below).
+3. Flow opens.
+4. Install Claude Code (skip if `claude --version` already works), in PowerShell, no admin:
+   `irm https://claude.ai/install.ps1 | iex`. It goes to `%USERPROFILE%\.local\bin\claude.exe`, which is where
+   Flow looks. Git for Windows isn't needed.
+5. The person signs in: open a new PowerShell window, `claude`, sign in in the browser, then `/exit`.
+6. Connect Flow (below).
 
 Updating later: from version 0.1.3, Flow updates itself (it installs when Flow quits, or from the tray's
 **Restart to update**). Older copies: run the new installer James sends. Settings and sign-ins are kept.
 
 ## Connect Flow (both)
 
-Flow opens on **Connections**, four numbered parts:
+Flow opens on **Connections**. Go down the page:
 1. **Database**: paste the database line, **Connect**. Flow sets up its own tables on first connect.
 2. **Claude**: paste the key, **Save**. Flow checks the key works and the account has credit.
 3. **Google**: **Load from file…**, pick the `.json` file, then **Connect Google**. The browser opens: sign in
@@ -72,13 +84,12 @@ Flow opens on **Connections**, four numbered parts:
    Flow**, allow everything listed.
 4. **About you**: their full name (and first name if it isn't the first word) and a sentence about their work.
    Claude writes and signs off in this name. **Open Flow** stays off until a name is saved.
+5. **Background work** (further down the same page): tick **Use Claude Code (my Claude subscription) for the mail
+   check**, then **Save options**. It's off on a new copy on purpose, so Flow never uses a Claude account without
+   the person choosing it.
 
-Then **Open Flow**. Suggest **Practice mode** (Settings, Connections) for the first day: everything is checked and
-confirmed but nothing is sent.
-
-Optional, Mac or Windows: with a Claude Pro or Max subscription, Flow's mail check can run on Claude Code instead
-of the API key. Install Claude Code (Mac: `curl -fsSL https://claude.ai/install.sh | bash`), run `claude` once and
-sign in, then in Flow: Settings, Background work, tick **Use Claude Code**, Save.
+Then **Open Flow**. Suggest **Practice mode** (same page) for the first day: everything is checked and confirmed but
+nothing is sent. Flow's mail check runs every 5 minutes from 6am to 10pm; the **Sync** button works any time.
 
 ## Fixing problems
 
@@ -93,6 +104,9 @@ sign in, then in Flow: Settings, Background work, tick **Use Claude Code**, Save
 | Database won't connect, or "paused" | Check the line was pasted whole (starts `postgresql://`, no spaces). A free Supabase project pauses after 7 days unused: supabase.com/dashboard, the project, **Restore project**. Flow reconnects by itself. |
 | Claude: key rejected / out of credit | Rejected: a typo or a deleted key, ask James. Out of credit: console.anthropic.com, Billing, add credit. Flow waits and carries on. |
 | Google: "Access blocked" or an admin message | A work (Google Workspace) account whose admin blocks outside apps. Use a personal Gmail, or the admin allows Flow. |
+| `claude: command not found` after installing Claude Code | Open a new Terminal / PowerShell window and try again. Flow itself finds it in `~/.local/bin` without the PATH. |
+| Claude Code says the plan doesn't include it | They need Pro, Max or higher (not the free plan). Until then Flow's mail check uses the API key. |
+| Claude Code signed out, or the plan's usage runs out | Nothing breaks: Flow uses the API key for that check and tries Claude Code again 30 minutes later. To sign back in: `claude`, then `/login`. |
 | Red "Google disconnected: reconnect" by Sync | Click it and sign in to Google again. |
 | **Open Flow** is greyed out | About you needs a full name, saved. |
 | Flow misbehaves later | F in the menu bar (Mac) or tray (Windows), **Open Flow's logs**, send James `flow.log` (and `flow.1.log`). Logs: Mac `~/Library/Application Support/Flow/logs`, Windows `%APPDATA%\Flow\logs`. |

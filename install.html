@@ -11,7 +11,7 @@
 <main>
   <p><a href="index.html">Flow</a></p>
   <h1>Install Flow</h1>
-  <p class="lead">About 15 minutes. You only do this once.</p>
+  <p class="lead">About 20 minutes. You only do this once.</p>
 
   <h2>Before you start</h2>
   <p>James gives you four things. Keep the last three private: don't email them or post them anywhere.</p>
@@ -21,6 +21,7 @@
     <li><b>A Claude key</b>: starts <code>sk-ant-</code></li>
     <li><b>The Google file</b>: a small file ending <code>.json</code></li>
   </ol>
+  <p>You also need your own <b>Claude subscription</b> (Pro or Max, at claude.ai). Flow does its regular work on it.</p>
 
   <h2>Mac</h2>
   <ol>
@@ -29,6 +30,9 @@
     <li><b>Paste this line</b> and press <kbd>Return</kbd>:
       <pre>bash ~/Downloads/Flow/install-mac.sh</pre>
       Wait about 5 minutes. Flow opens by itself when it's done.</li>
+    <li><b>Install Claude Code</b>: in the same Terminal, paste this line and press <kbd>Return</kbd>:
+      <pre>curl -fsSL https://claude.ai/install.sh | bash</pre></li>
+    <li><b>Sign in to Claude Code</b>: type <code>claude</code> and press <kbd>Return</kbd>. Choose to sign in with your Claude account and follow the steps in the browser. Then type <code>/exit</code> and press <kbd>Return</kbd>.</li>
     <li>Now <a href="#connect">connect Flow</a> (below).</li>
   </ol>
   <p class="muted">Your Mac asks a few questions the first time. <b>"Flow Safe Storage"</b>: type your Mac password and click <b>Always Allow</b>. <b>"Flow wants to control Word"</b>, <b>Messages</b> or a folder: click <b>OK</b> or <b>Allow</b>.</p>
@@ -37,7 +41,11 @@
   <ol>
     <li><b>Double-click</b> the Flow Setup file.</li>
     <li>If Windows says <b>"Windows protected your PC"</b>: click <b>More info</b>, then <b>Run anyway</b>.</li>
-    <li>Flow installs and opens. Now <a href="#connect">connect Flow</a> (below).</li>
+    <li>Flow installs and opens.</li>
+    <li><b>Install Claude Code</b>: press the <kbd>Windows</kbd> key, type <code>PowerShell</code>, press <kbd>Enter</kbd>. Paste this line and press <kbd>Enter</kbd>:
+      <pre>irm https://claude.ai/install.ps1 | iex</pre></li>
+    <li><b>Sign in to Claude Code</b>: close PowerShell and open it again. Type <code>claude</code>, press <kbd>Enter</kbd>, sign in with your Claude account in the browser, then type <code>/exit</code>.</li>
+    <li>Now <a href="#connect">connect Flow</a> (below).</li>
   </ol>
 
   <h2 id="connect">Connect Flow</h2>
@@ -48,6 +56,7 @@
     <li><b>Google</b>: click <b>Load from file…</b> and pick the Google file. Click <b>Connect Google</b> and sign in with your own Google account.
       Google says <b>"Google hasn't verified this app"</b>: click <b>Advanced</b>, then <b>Go to Flow</b>, then allow everything it lists.</li>
     <li><b>About you</b>: type your full name and a sentence about your work. Claude writes in your name.</li>
+    <li><b>Background work</b>: tick <b>Use Claude Code (my Claude subscription) for the mail check</b>, then click <b>Save options</b>.</li>
     <li>Click <b>Open Flow</b>. Done.</li>
   </ol>
 
