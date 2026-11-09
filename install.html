@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Install Flow</title>
+<meta name="description" content="How to install Flow on a Mac or a Windows PC and connect it, in a few simple steps.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <p><a href="index.html">Flow</a></p>
+  <h1>Install Flow</h1>
+  <p class="lead">About 15 minutes. You only do this once.</p>
+
+  <h2>Before you start</h2>
+  <p>James gives you four things. Keep the last three private: don't email them or post them anywhere.</p>
+  <ol>
+    <li><b>Flow itself</b>: a zip file (Mac) or <i>Flow Setup</i> file (Windows).</li>
+    <li><b>The database line</b>: one long line starting <code>postgresql://</code></li>
+    <li><b>A Claude key</b>: starts <code>sk-ant-</code></li>
+    <li><b>The Google file</b>: a small file ending <code>.json</code></li>
+  </ol>
+
+  <h2>Mac</h2>
+  <ol>
+    <li><b>Unzip</b> the Flow zip in your <b>Downloads</b> folder. You get a folder called <b>Flow</b>.</li>
+    <li><b>Open Terminal</b>: press <kbd>Cmd</kbd> + <kbd>Space</kbd>, type <code>Terminal</code>, press <kbd>Return</kbd>.</li>
+    <li><b>Paste this line</b> and press <kbd>Return</kbd>:
+      <pre>bash ~/Downloads/Flow/install-mac.sh</pre>
+      Wait about 5 minutes. Flow opens by itself when it's done.</li>
+    <li>Now <a href="#connect">connect Flow</a> (below).</li>
+  </ol>
+  <p class="muted">Your Mac asks a few questions the first time. <b>"Flow Safe Storage"</b>: type your Mac password and click <b>Always Allow</b>. <b>"Flow wants to control Word"</b>, <b>Messages</b> or a folder: click <b>OK</b> or <b>Allow</b>.</p>
+
+  <h2>Windows</h2>
+  <ol>
+    <li><b>Double-click</b> the Flow Setup file.</li>
+    <li>If Windows says <b>"Windows protected your PC"</b>: click <b>More info</b>, then <b>Run anyway</b>.</li>
+    <li>Flow installs and opens. Now <a href="#connect">connect Flow</a> (below).</li>
+  </ol>
+
+  <h2 id="connect">Connect Flow</h2>
+  <p>Flow opens on <b>Connections</b>. Go down the page:</p>
+  <ol>
+    <li><b>Database</b>: paste the database line, click <b>Connect</b>.</li>
+    <li><b>Claude</b>: paste the Claude key, click <b>Save</b>.</li>
+    <li><b>Google</b>: click <b>Load from file…</b> and pick the Google file. Click <b>Connect Google</b> and sign in with your own Google account.
+      Google says <b>"Google hasn't verified this app"</b>: click <b>Advanced</b>, then <b>Go to Flow</b>, then allow everything it lists.</li>
+    <li><b>About you</b>: type your full name and a sentence about your work. Claude writes in your name.</li>
+    <li>Click <b>Open Flow</b>. Done.</li>
+  </ol>
+
+  <h2>Good to know</h2>
+  <ul>
+    <li><b>Nothing is sent without your click.</b> Flow only prepares emails and messages; you check them and press Send.</li>
+    <li><b>Want to try it safely first?</b> Tick <b>Practice mode</b> in Settings, Connections. Nothing leaves at all.</li>
+    <li><b>Closing the window keeps Flow running</b> (the F at the top of a Mac screen, or by the clock on Windows). Quit it from there.</li>
+  </ul>
+
+  <h2>Stuck?</h2>
+  <ul>
+    <li>Send James a screenshot of what you see.</li>
+    <li>Using Claude to help? Give it <a href="install-for-claude.md">this note</a> (or paste in this link: <code>https://brocapjames.github.io/flow/install-for-claude.md</code>).</li>
+  </ul>
+</main>
+<footer>Contact: <a href="mailto:jamesmatthewmcgrath@gmail.com">jamesmatthewmcgrath@gmail.com</a></footer>
+</body>
+</html>
