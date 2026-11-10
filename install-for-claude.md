@@ -101,7 +101,8 @@ nothing is sent. Flow's mail check runs every 5 minutes from 6am to 10pm; the **
 
 Flow has a phone website at `https://flow-phone.pages.dev` (shared by everyone's Flow; it holds no data). Tasks and
 drafts work any time; email, Claude and sending go through Flow on their computer, which must be on, awake and
-online with Flow running. Nothing is sent without a confirmation on the phone.
+online with Flow running. Nothing is sent unless the person taps Send on the phone; anything Flow's checks flag,
+and every payment, asks them to confirm first.
 
 It needs from James: a website login (email and password, made in the person's own database project, the password
 typed by the person) and that project's **publishable** key (starts `sb_publishable_`; unlike the other keys this
