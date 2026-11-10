@@ -97,6 +97,28 @@ Flow opens on **Connections**. Go down the page:
 Then **Open Flow**. Suggest **Practice mode** (same page) for the first day: everything is checked and confirmed but
 nothing is sent. Flow's mail check runs every 5 minutes from 6am to 10pm; the **Sync** button works any time.
 
+## Flow on their phone (optional)
+
+Flow has a phone website at `https://flow-phone.pages.dev` (shared by everyone's Flow; it holds no data). Tasks and
+drafts work any time; email, Claude and sending go through Flow on their computer, which must be on, awake and
+online with Flow running. Nothing is sent without a confirmation on the phone.
+
+It needs from James: a website login (email and password, made in the person's own database project, the password
+typed by the person) and that project's **publishable** key (starts `sb_publishable_`; unlike the other keys this
+one isn't secret, but never ask for or accept a key called *secret* or *service_role*).
+
+1. In Flow: **Settings**, **Connections**, **Flow website**: paste the publishable key, **Save**.
+2. **Connect a phone**: a QR code and a code show for 10 minutes.
+3. On the phone: scan the QR code with the camera, open the link, sign in. A phone's first time has to be the QR
+   code (or **Copy the link**, opened on the phone): that's how the website learns whose Flow it's for.
+4. **Use Face ID next time?** Yes.
+5. App icon: Safari, Share, **Add to Home Screen**. Opened from there the first time, it says "Open Flow from your
+   laptop first" with a box: **Connect a phone** again on the computer, **Copy the link**, get it to the phone,
+   paste it in the box, sign in.
+
+Keeping the computer awake: under **Flow website**, "Keep this Mac (or laptop) awake while it's plugged in and a
+phone is connected" (ticked already on a Mac). A closed lid still sleeps it.
+
 ## Fixing problems
 
 | What they see | What to do |
@@ -120,6 +142,10 @@ nothing is sent. Flow's mail check runs every 5 minutes from 6am to 10pm; the **
 | Claude Code signed out, or the plan's usage runs out | Nothing breaks: Flow uses the API key for that check and tries Claude Code again 30 minutes later. To sign back in: `claude`, then `/login`. |
 | Red "Google disconnected: reconnect" by Sync | Click it and sign in to Google again. |
 | **Open Flow** is greyed out | About you needs a full name, saved. |
+| Phone: "Open Flow from your laptop first" | The phone (or its Home Screen copy) hasn't been given the laptop's link yet. Scan the QR code from **Connect a phone**, or paste the copied link in the box on that screen. |
+| Phone: "Your laptop isn't answering" | The computer is asleep, off or offline, or Flow isn't running. Open the lid, plug it in, open Flow. Lists and drafts still work meanwhile. |
+| Phone: "This phone isn't connected" | **Connect this phone** on the phone, then **Reconnect with Face ID**, or type a new code from **Connect a phone** on the computer. |
+| Computer: "Paste your Supabase publishable key above and click Save first" | Step 1 above. The key comes from James. |
 | Flow misbehaves later | F in the menu bar (Mac) or tray (Windows), **Open Flow's logs**, send James `flow.log` (and `flow.1.log`). Logs: Mac `~/Library/Application Support/Flow/logs`, Windows `%APPDATA%\Flow\logs`. |
 
 Don't guess beyond this. If something isn't covered, the answer is: send James a screenshot.
