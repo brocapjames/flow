@@ -94,15 +94,16 @@ Flow opens on **Connections**. Go down the page:
    check**, then **Save options**. It's off on a new copy on purpose, so Flow never uses a Claude account without
    the person choosing it.
 
-Then **Open Flow**. Suggest **Practice mode** (same page) for the first day: everything is checked and confirmed but
+Then **Open Flow**. Suggest **Practice mode** (same page) for the first day: everything is checked but
 nothing is sent. Flow's mail check runs every 5 minutes from 6am to 10pm; the **Sync** button works any time.
 
 ## Flow on their phone (optional)
 
 Flow has a phone website at `https://flow-phone.pages.dev` (shared by everyone's Flow; it holds no data). Tasks and
 drafts work any time; email, Claude and sending go through Flow on their computer, which must be on, awake and
-online with Flow running. Nothing is sent unless the person taps Send on the phone; anything Flow's checks flag,
-and every payment, asks them to confirm first.
+online with Flow running. Nothing is sent unless the person taps Send or Pay on the phone. Nothing pops up to confirm:
+if Flow's checks notice something, it says what and the same button, tapped again, sends it; a payment to a new payee
+needs the tick in the payment first.
 
 It needs from James: a website login (email and password, made in the person's own database project, the password
 typed by the person) and that project's **publishable** key (starts `sb_publishable_`; unlike the other keys this
