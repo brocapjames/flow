@@ -90,6 +90,9 @@ Flow opens on **Connections**. Go down the page:
    Flow**, allow everything listed.
 4. **About you**: their full name (and first name if it isn't the first word) and a sentence about their work.
    Claude writes and signs off in this name. **Open Flow** stays off until a name is saved.
+   Below it is **How you write**: empty at first. A minute after Google is connected Flow reads the last 40 sent
+   emails once and fills it in; after that it looks about once a week, and only if 10 emails have been sent since.
+   The person can edit it, click **Scan again** or **Undo last update**, or untick the weekly look. Nothing to do here.
 5. **Background work** (further down the same page): tick **Use Claude Code (my Claude subscription) for the mail
    check**, then **Save options**. It's off on a new copy on purpose, so Flow never uses a Claude account without
    the person choosing it.
