@@ -17,13 +17,24 @@ their own Claude key and their own Google sign-in. James can't see their email.
   into the chat.** They paste them straight into Flow's own setup screen. If they paste one into the chat by
   mistake, tell them to ask James for a new one (the Claude key can be replaced at console.anthropic.com, API keys).
 - Don't use `sudo`, don't turn off macOS security (Gatekeeper, SIP), and don't download Flow from anywhere else.
-  The only real copy is the file James gave them.
+  The only real copies are the two GitHub pages below and a file James sent them himself.
 - Don't edit Flow's settings file (`config.json`) by hand; its keys are encrypted and editing can break them.
 - Sign-ins (Google, Apple, Microsoft, Claude) and macOS permission questions are for the person to click.
 
-## What the person should have from James
+## What the person should have
 
-1. Flow itself: `Flow-for-Mac-<version>.zip` (Mac) or `Flow-Setup-<version>.exe` (Windows).
+1. Flow itself: `Flow-for-Mac-<version>.zip` (Mac) or `Flow-Setup-<version>.exe` (Windows), from GitHub or from James.
+   - **Mac**: the zip is on a private repository, so the person needs a GitHub account that James has invited.
+     They accept the invitation (GitHub's email, or https://github.com/brocapjames/flow-app/invitations), then,
+     signed in, open https://github.com/brocapjames/flow-app/releases/latest and click the
+     `Flow-for-Mac-<version>.zip` under **Assets** (not "Source code"). A 404 there means not signed in, the
+     wrong account, or the invitation not accepted: don't look for the file elsewhere, ask James. The GitHub
+     sign-in is the person's to do.
+   - **Windows**: public, no account: https://github.com/brocapjames/flow-releases/releases/latest, the
+     `Flow-Setup-<version>.exe` under **Assets**.
+
+From James, privately:
+
 2. The database line: one line starting `postgresql://` (a Supabase "session pooler" address with its password).
 3. A Claude API key: starts `sk-ant-`.
 4. The Google file: a `.json` file (Flow's Google sign-in client).

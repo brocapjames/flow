@@ -14,9 +14,14 @@
   <p class="lead">About 20 minutes. You only do this once.</p>
 
   <h2>Before you start</h2>
-  <p>James gives you four things. Keep the last three private: don't email them or post them anywhere.</p>
+  <p>You need four things. James gives you the last three. Keep those private: don't email them or post them anywhere.</p>
   <ol>
-    <li><b>Flow itself</b>: a zip file (Mac) or <i>Flow Setup</i> file (Windows).</li>
+    <li><b>Flow itself</b>, from GitHub:
+      <ul>
+        <li><b>Mac</b>: James invites your GitHub account (make a free one at github.com and tell him the username). Accept the invitation in the email GitHub sends you. Then, signed in to GitHub, open <a href="https://github.com/brocapjames/flow-app/releases/latest">github.com/brocapjames/flow-app/releases/latest</a> and click <b>Flow-for-Mac-…zip</b> under <b>Assets</b>. If the page says <i>404</i>, you're not signed in or haven't accepted the invitation yet.</li>
+        <li><b>Windows</b>: no account needed. Open <a href="https://github.com/brocapjames/flow-releases/releases/latest">github.com/brocapjames/flow-releases/releases/latest</a> and click <b>Flow-Setup-…exe</b> under <b>Assets</b>.</li>
+      </ul>
+      James can also just send you the file.</li>
     <li><b>The database line</b>: one long line starting <code>postgresql://</code></li>
     <li><b>A Claude key</b>: starts <code>sk-ant-</code></li>
     <li><b>The Google file</b>: a small file ending <code>.json</code></li>
@@ -25,7 +30,7 @@
 
   <h2>Mac</h2>
   <ol>
-    <li><b>Unzip</b> the Flow zip in your <b>Downloads</b> folder. You get a folder called <b>Flow</b>.</li>
+    <li><b>Unzip</b> the Flow zip in your <b>Downloads</b> folder (Safari may have unzipped it already). You get a folder called <b>Flow</b>.</li>
     <li><b>Open Terminal</b>: press <kbd>Cmd</kbd> + <kbd>Space</kbd>, type <code>Terminal</code>, press <kbd>Return</kbd>.</li>
     <li><b>Paste this line</b> and press <kbd>Return</kbd>:
       <pre>bash ~/Downloads/Flow/install-mac.sh</pre>
