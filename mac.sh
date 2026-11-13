@@ -26,7 +26,7 @@ WORK="$HOME/Downloads"
 ZIP="$WORK/Flow-for-Mac-$VERSION.zip"
 DEST="$WORK/Flow"
 
-say "Downloading Flow $VERSION…"
+say "Downloading Flow ${VERSION}…"   # the braces matter: a Mac's own bash reads the … as part of the name
 curl -fL --progress-bar "$REPO/releases/download/v$VERSION/Flow-for-Mac-$VERSION.zip" -o "$ZIP" || fail "Couldn't download Flow $VERSION. Check the internet connection and paste the line again."
 
 # An older Flow folder from last time would make the unzip land beside it: it goes to the Bin's place first.
