@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<title>Join Flow</title>
+<meta name="description" content="Get Flow and join with your invite.">
+<link rel="stylesheet" href="style.css">
+<style>
+  .btn{display:inline-block;background:#2b4fd8;color:#fff;border:0;border-radius:8px;padding:11px 18px;font:600 16px/1.2 inherit;text-decoration:none;cursor:pointer}
+  .btn.ghost{background:#e8ebf5;color:#1f2430}
+  .invite{background:#e8ebf5;border-radius:8px;padding:10px 12px;font:13px/1.5 Consolas,"SF Mono",Menlo,monospace;overflow-wrap:anywhere;user-select:all;margin:8px 0}
+  .card{background:#fff;border-radius:12px;padding:4px 18px 14px;margin:14px 0;box-shadow:0 1px 3px rgba(31,36,48,.08)}
+  .note{background:#fff7e6;border-radius:8px;padding:10px 12px}
+  .guide{list-style:none;padding:0;margin:10px 0;counter-reset:g}
+  .guide li{counter-increment:g;position:relative;padding:8px 0 8px 40px;margin:0;border-top:1px solid #eef0f6}
+  .guide li:first-child{border-top:0}
+  .guide li::before{content:counter(g);position:absolute;left:0;top:7px;width:26px;height:26px;border-radius:50%;background:#e8ebf5;color:#2b4fd8;font:700 14px/26px inherit;text-align:center}
+  .guide small{display:block;color:#6b7280;font-size:13px}
+  pre{white-space:pre-wrap;overflow-wrap:anywhere}
+  details{margin-top:10px} summary{cursor:pointer;color:#2b4fd8}
+</style>
+</head>
+<body>
+<main>
+  <p><a href="index.html">Flow</a></p>
+  <h1>Join Flow</h1>
+  <p class="lead">Install it, sign in to Google, done. About 5 minutes.</p>
+
+  <p class="note" id="noinvite" hidden>This page needs the whole link James sent you. Open that link again, or ask him for a new one.</p>
+
+  <div class="card" id="for-win">
+    <h2>On Windows</h2>
+    <ol class="guide">
+      <li><a class="btn" id="win-get" href="https://github.com/brocapjames/flow-releases/releases/latest" target="_blank" rel="noopener">Get Flow</a><small>A download page opens. Click <b>Flow-Setup-…exe</b>.</small></li>
+      <li><b>Open the file</b> you downloaded.<small>"Windows protected your PC"? Click <b>More info</b>, then <b>Run anyway</b>.</small></li>
+      <li><b>Sign in to Google</b> when your browser opens.<small>"Google hasn't verified this app"? Click <b>Advanced</b>, then <b>Go to Flow</b>, and allow what it lists.</small></li>
+    </ol>
+    <p class="muted">That's it. Flow joins by itself and opens on your list.</p>
+  </div>
+
+  <div class="card" id="for-mac">
+    <h2>On a Mac</h2>
+    <ol class="guide">
+      <li><b>Open Terminal.</b><small>Press <kbd>Cmd</kbd> + <kbd>Space</kbd>, type <code>Terminal</code>, press <kbd>Return</kbd>.</small></li>
+      <li><b>Paste this line</b> and press <kbd>Return</kbd>.
+        <pre id="mac-line">curl -fsSL https://brocapjames.github.io/flow/mac.sh | bash</pre>
+        <button class="btn ghost" id="mac-copy" type="button">Copy the line</button> <span class="muted" id="mac-copied" aria-live="polite"></span>
+        <small>Wait about 5 minutes. Flow opens by itself.</small></li>
+      <li><b>Click Always Allow</b> if your Mac asks about "Flow Safe Storage".<small>It asks for your Mac password once.</small></li>
+      <li><b>Sign in to Google</b> when your browser opens.<small>"Google hasn't verified this app"? Click <b>Advanced</b>, then <b>Go to Flow</b>, and allow what it lists.</small></li>
+    </ol>
+    <p class="muted">That's it. Flow joins by itself and opens on your list.</p>
+  </div>
+
+  <p class="muted" id="other"></p>
+
+  <details>
+    <summary>Flow opened but didn't join?</summary>
+    <p>Click this, and say yes when your browser asks to open Flow:</p>
+    <p><a class="btn ghost" id="open" href="#">Open Flow and join</a></p>
+    <p class="muted">Or paste this into Flow where it says <b>Paste the invite</b>, and click <b>Join</b>:</p>
+    <div class="invite" id="invite"></div>
+    <p><button class="btn ghost" id="copy" type="button">Copy the invite</button> <span class="muted" id="copied" aria-live="polite"></span></p>
+    <p class="muted">The invite works once and lasts 7 days. More help: <a href="install.html">the install page</a>.</p>
+  </details>
+</main>
+<footer>Flow only prepares emails and messages. Nothing is sent without your click.</footer>
+<script>
+  // The invite is the part of this page's address after the #. A browser never sends that part to the website.
+  (function () {
+    var code = location.hash.slice(1), ok = /^[A-Za-z0-9_-]{20,2000}$/.test(code);
+    var $ = function (id) { return document.getElementById(id); };
+    var mac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent), phone = /iPhone|iPad|Android/.test(navigator.userAgent);
+    $("for-mac").hidden = !mac && !phone; $("for-win").hidden = mac && !phone;
+    $("other").textContent = phone ? "Flow installs on a Mac or a Windows computer. Open this link there." : mac ? "On a Windows PC instead? Open this same link there." : "On a Mac instead? Open this same link there.";
+    var copy = function (text, said) { return navigator.clipboard.writeText(text).then(function () { if (said) said.textContent = "Copied."; }, function () { if (said) said.textContent = "Select the text and copy it."; }); };
+    if (!ok) { $("noinvite").hidden = false; $("open").removeAttribute("href"); $("copy").disabled = true; $("invite").textContent = "(no invite in this link)"; $("mac-copy").onclick = function () { copy($("mac-line").textContent, $("mac-copied")); }; return; }
+    var invite = "flow-invite:" + code;
+    // Mac: the invite rides along with the install line, so Flow joins when it first opens.
+    $("mac-line").textContent = "curl -fsSL https://brocapjames.github.io/flow/mac.sh | bash -s -- " + code;
+    $("mac-copy").onclick = function () { copy($("mac-line").textContent, $("mac-copied")); };
+    // Windows: the invite goes on the clipboard as the download starts; a new Flow looks there when it first opens.
+    $("win-get").addEventListener("click", function () { copy(invite, null); });
+    $("open").href = "flowapp://join/" + code;
+    $("invite").textContent = invite;
+    $("copy").onclick = function () { copy(invite, $("copied")); };
+  })();
+</script>
+</body>
+</html>

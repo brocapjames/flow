@@ -4,86 +4,62 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Install Flow</title>
-<meta name="description" content="How to install Flow on a Mac or a Windows PC and connect it, in a few simple steps.">
+<meta name="description" content="How to install Flow on a Mac or a Windows PC and get going, in a few simple steps.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <main>
   <p><a href="index.html">Flow</a></p>
   <h1>Install Flow</h1>
-  <p class="lead">About 20 minutes. You only do this once.</p>
+  <p class="lead">About 5 minutes. You only do this once.</p>
 
-  <h2>Before you start</h2>
-  <p>You need four things. James gives you the last three. Keep those private: don't email them or post them anywhere.</p>
+  <h2>What you need</h2>
+  <ul>
+    <li><b>An invite link from James.</b> It opens a page with these same steps and a button that joins you. It works once and lasts 7 days.</li>
+    <li><b>Your own Google account</b> (Gmail and Calendar).</li>
+  </ul>
+  <p class="muted">That's all. The invite brings everything else Flow needs.</p>
+
+  <h2 id="connect">The steps</h2>
+  <p>Open the <b>invite link</b> James sent you. The page it opens has these steps with your invite built in, so Flow joins by itself.</p>
+  <p><b>Windows</b></p>
   <ol>
-    <li><b>Flow itself</b>, from GitHub:
-      <ul>
-        <li><b>Mac</b>: James invites your GitHub account (make a free one at github.com and tell him the username). Accept the invitation in the email GitHub sends you. Then, signed in to GitHub, open <a href="https://github.com/brocapjames/flow-app/releases/latest">github.com/brocapjames/flow-app/releases/latest</a> and click <b>Flow-for-Mac-…zip</b> under <b>Assets</b>. If the page says <i>404</i>, you're not signed in or haven't accepted the invitation yet.</li>
-        <li><b>Windows</b>: no account needed. Open <a href="https://github.com/brocapjames/flow-releases/releases/latest">github.com/brocapjames/flow-releases/releases/latest</a> and click <b>Flow-Setup-…exe</b> under <b>Assets</b>.</li>
-      </ul>
-      James can also just send you the file.</li>
-    <li><b>The database line</b>: one long line starting <code>postgresql://</code></li>
-    <li><b>A Claude key</b>: starts <code>sk-ant-</code></li>
-    <li><b>The Google file</b>: a small file ending <code>.json</code></li>
+    <li>Click <b>Get Flow</b>, then <b>Flow-Setup-…exe</b> on the page that opens.</li>
+    <li>Open the file. If Windows says <b>"Windows protected your PC"</b>: <b>More info</b>, then <b>Run anyway</b>.</li>
+    <li>Your browser opens: <b>sign in to Google</b>. If Google says <b>"hasn't verified this app"</b>: <b>Advanced</b>, <b>Go to Flow</b>, allow what it lists.</li>
   </ol>
-  <p>You also need your own <b>Claude subscription</b> (Pro or Max, at claude.ai). Flow does its regular work on it.</p>
-
-  <h2>Mac</h2>
+  <p><b>Mac</b></p>
   <ol>
-    <li><b>Unzip</b> the Flow zip in your <b>Downloads</b> folder (Safari may have unzipped it already). You get a folder called <b>Flow</b>.</li>
-    <li><b>Open Terminal</b>: press <kbd>Cmd</kbd> + <kbd>Space</kbd>, type <code>Terminal</code>, press <kbd>Return</kbd>.</li>
-    <li><b>Paste this line</b> and press <kbd>Return</kbd>:
-      <pre>bash ~/Downloads/Flow/install-mac.sh</pre>
-      If your Mac asks whether <b>Terminal</b> can access your Downloads folder, click <b>Allow</b>. Wait about 5 minutes. Flow opens by itself when it's done.</li>
-    <li><b>Install Claude Code</b>: in the same Terminal, paste this line and press <kbd>Return</kbd>:
-      <pre>curl -fsSL https://claude.ai/install.sh | bash</pre></li>
-    <li><b>Sign in to Claude Code</b>: type <code>claude</code> and press <kbd>Return</kbd>. Choose to sign in with your Claude account and follow the steps in the browser. Then type <code>/exit</code> and press <kbd>Return</kbd>.</li>
-    <li>Now <a href="#connect">connect Flow</a> (below).</li>
+    <li>Open <b>Terminal</b>: <kbd>Cmd</kbd> + <kbd>Space</kbd>, type <code>Terminal</code>, <kbd>Return</kbd>.</li>
+    <li>Paste the line from the invite page and press <kbd>Return</kbd>. Wait about 5 minutes; Flow opens by itself.</li>
+    <li>If your Mac asks about <b>"Flow Safe Storage"</b>: your Mac password, then <b>Always Allow</b>.</li>
+    <li>Your browser opens: <b>sign in to Google</b>, as above.</li>
   </ol>
-  <p class="muted">Your Mac asks a few questions the first time. <b>"Flow Safe Storage"</b>: type your Mac password and click <b>Always Allow</b>. <b>"Flow wants to control Word"</b>, <b>Messages</b> or a folder: click <b>OK</b> or <b>Allow</b>.</p>
-
-  <p class="muted"><b>Updating later:</b> move the old <b>Flow</b> folder in Downloads to the Bin, unzip the new zip, and paste the same line again. If Flow can't read your texts afterwards: System Settings, Privacy &amp; Security, Full Disk Access, select <b>Flow</b>, click the minus, then add Flow again with the plus.</p>
-
-  <h2>Windows</h2>
-  <ol>
-    <li><b>Double-click</b> the Flow Setup file.</li>
-    <li>If Windows says <b>"Windows protected your PC"</b>: click <b>More info</b>, then <b>Run anyway</b>.</li>
-    <li>Flow installs and opens.</li>
-    <li><b>Install Claude Code</b>: press the <kbd>Windows</kbd> key, type <code>PowerShell</code>, press <kbd>Enter</kbd>. Paste this line and press <kbd>Enter</kbd>:
-      <pre>irm https://claude.ai/install.ps1 | iex</pre></li>
-    <li><b>Sign in to Claude Code</b>: close PowerShell and open it again. Type <code>claude</code>, press <kbd>Enter</kbd>, sign in with your Claude account in the browser, then type <code>/exit</code>.</li>
-    <li>Now <a href="#connect">connect Flow</a> (below).</li>
-  </ol>
-
-  <h2 id="connect">Connect Flow</h2>
-  <p>Flow opens on <b>Connections</b>. Go down the page:</p>
-  <ol>
-    <li><b>Database</b>: paste the database line, click <b>Connect</b>.</li>
-    <li><b>Claude</b>: paste the Claude key, click <b>Save</b>.</li>
-    <li><b>Google</b>: click <b>Load from file…</b> and pick the Google file. Click <b>Connect Google</b> and sign in with your own Google account.
-      Google says <b>"Google hasn't verified this app"</b>: click <b>Advanced</b>, then <b>Go to Flow</b>, then allow everything it lists.</li>
-    <li><b>About you</b>: type your full name and a sentence about your work. Claude writes in your name. A minute after Google is connected, Flow reads your last 40 sent emails once and writes a short note on <b>how you write</b>. It shows here, and you can change it.</li>
-    <li><b>Background work</b>: tick <b>Use Claude Code (my Claude subscription) for the mail check</b>, then click <b>Save options</b>.</li>
-    <li>Click <b>Open Flow</b>. Done.</li>
-  </ol>
+  <p class="muted">Flow then opens on your list and reads your last few days of email; tasks appear within a couple of minutes. Your name comes from the invite; change it, and everything else, in <b>Settings</b>. If Flow opens on <b>Welcome to Flow</b> without joining, the invite page has a button and the invite to paste.</p>
 
   <h2 id="phone">Flow on your phone (optional)</h2>
   <p>Flow has a website for your phone. Your lists and drafts work any time. Email, Claude and sending work while your computer is on with Flow running.</p>
   <ol>
-    <li><b>James sets up your website login with you</b>: your email and a password you choose. He also gives you one more key, starting <code>sb_publishable_</code>.</li>
-    <li>In Flow: <b>Settings</b>, <b>Connections</b>, <b>Flow website</b>. Paste that key and click <b>Save</b>.</li>
-    <li>Click <b>Connect a phone</b>. A QR code appears for 10 minutes.</li>
-    <li><b>Scan it</b> with your phone's camera, open the link, and sign in with your email and password.</li>
+    <li>In Flow: <b>Settings</b>, <b>Connections</b>, <b>Flow website</b>, <b>Connect a phone</b>. A QR code appears for 10 minutes.</li>
+    <li><b>Scan it</b> with your phone's camera and open the link.</li>
+    <li>The first time, tap <b>First time? Make your login</b>: your own email and a new password, for the Flow website only.</li>
     <li>When it asks <b>Use Face ID next time?</b>, say yes.</li>
   </ol>
   <p class="muted"><b>Want an app icon?</b> In Safari: Share, <b>Add to Home Screen</b>. The first time you open it from there it asks for the link from your laptop: click <b>Connect a phone</b> again, then <b>Copy the link</b>, send it to your phone and paste it in.</p>
   <p class="muted"><b>Keep the computer plugged in with its lid open.</b> Flow keeps it awake while your phone is connected. If it sleeps, the phone says your laptop isn't answering; your lists still work.</p>
+
+  <h2>Updating</h2>
+  <ul>
+    <li><b>Windows</b>: Flow updates itself.</li>
+    <li><b>Mac</b>: Flow tells you when a new version is out. Click the <b>F</b> at the top of the screen, then <b>Update to Flow …</b>. It takes about 5 minutes and Flow restarts by itself. If Flow can't read your texts afterwards: System Settings, Privacy &amp; Security, Full Disk Access, select <b>Flow</b>, click the minus, then add Flow again with the plus.</li>
+  </ul>
 
   <h2>Good to know</h2>
   <ul>
     <li><b>Nothing is sent without your click.</b> Flow only prepares emails and messages; you check them and press Send.</li>
     <li><b>Want to try it safely first?</b> Tick <b>Practice mode</b> in Settings, Connections. Nothing leaves at all.</li>
     <li><b>Closing the window keeps Flow running</b> (the F at the top of a Mac screen, or by the clock on Windows). Quit it from there.</li>
+    <li><b>Where your things are kept</b>: your tasks, drafts and attached files are in a database James runs for his friends, in a section only your Flow can reach. Your email and your Google sign-in stay on your own computer. See <a href="privacy.html">privacy</a>.</li>
   </ul>
 
   <h2>Stuck?</h2>
